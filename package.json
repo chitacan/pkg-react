@@ -1,0 +1,29 @@
+{
+  "name": "pkg-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "clean": "rm -rf dist bin",
+    "build": "npm run clean && npm run bundle:ncc && npm run build:ncc && npm run bundle:esb && npm run build:esb",
+    "build:ncc": "pkg dist/index.js --out-path bin",
+    "build:esb": "pkg dist/esbuild.js --out-path bin",
+    "bundle:ncc": "ncc build index.ts -o dist",
+    "bundle:esb": "esbuild index.ts --bundle --outfile=dist/esbuild.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/ncc": "^0.31.1",
+    "esbuild": "^0.13.12",
+    "pkg": "^5.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6"
+  }
+}
